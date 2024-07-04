@@ -1,3 +1,5 @@
+using json_object_hasher;
+
 namespace JsonObjectHasher.Newtonsoft.Tests.Models;
 
 public class ClassWithIgnoredProperty
