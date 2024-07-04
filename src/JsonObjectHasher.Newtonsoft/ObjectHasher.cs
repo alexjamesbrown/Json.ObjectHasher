@@ -14,8 +14,6 @@ public class ObjectHasher
         {
             ContractResolver = new HashIgnoreContractResolver()
         };
-        // var converter = new HashIgnoreJsonConverter();
-        // _settings.Converters.Add(converter);
     }
 
     public ObjectHasher() : this(new JsonSerializerSettings())
