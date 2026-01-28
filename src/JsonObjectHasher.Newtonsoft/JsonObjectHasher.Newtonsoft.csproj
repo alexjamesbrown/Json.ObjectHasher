@@ -1,17 +1,34 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
+    <!-- NuGet Package Metadata -->
+    <PackageId>JsonObjectHasher.Newtonsoft</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Contributors</Authors>
+    <Description>Generate deterministic MD5 hashes from .NET objects using JSON serialization. Supports property exclusion via HashIgnore attribute, multiple object hashing, and custom serialization settings.</Description>
+    <PackageTags>hash;json;object;md5;fingerprint;newtonsoft;deterministic;caching;deduplication</PackageTags>
+    <PackageProjectUrl>https://github.com/json-object-hasher/json-object-hasher</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/json-object-hasher/json-object-hasher</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\JsonObjectHasher\JsonObjectHasher.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JsonObjectHasher\JsonObjectHasher.csproj" />
+  </ItemGroup>
 
 </Project>

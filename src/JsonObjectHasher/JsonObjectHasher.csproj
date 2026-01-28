@@ -1,10 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>json_object_hasher</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>JsonObjectHasher</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Contributors</Authors>
+    <Description>Core library for JSON Object Hasher. Contains the HashIgnoreAttribute for excluding properties from hash calculation.</Description>
+    <PackageTags>hash;json;object;md5;fingerprint;attribute</PackageTags>
+    <PackageProjectUrl>https://github.com/json-object-hasher/json-object-hasher</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/json-object-hasher/json-object-hasher</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
