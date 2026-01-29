@@ -1,5 +1,5 @@
 using System.Reflection;
-using json_object_hasher;
+using JsonObjectHasher;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 

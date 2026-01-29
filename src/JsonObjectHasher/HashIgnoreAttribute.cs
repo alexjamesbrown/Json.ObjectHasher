@@ -1,4 +1,4 @@
-namespace json_object_hasher;
+namespace JsonObjectHasher;
 
 /// <summary>
 /// Marks a property or field to be excluded from hash calculation.
