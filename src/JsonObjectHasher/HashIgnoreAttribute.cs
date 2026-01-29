@@ -22,6 +22,4 @@ namespace JsonObjectHasher;
 /// </code>
 /// </example>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-public class HashIgnoreAttribute : Attribute
-{
-}
+public class HashIgnoreAttribute : Attribute;
