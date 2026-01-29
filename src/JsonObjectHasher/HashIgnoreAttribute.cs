@@ -1,4 +1,4 @@
-namespace json_object_hasher;
+namespace JsonObjectHasher;
 
 /// <summary>
 /// Marks a property or field to be excluded from hash calculation.
@@ -22,6 +22,4 @@ namespace json_object_hasher;
 /// </code>
 /// </example>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-public class HashIgnoreAttribute : Attribute
-{
-}
+public class HashIgnoreAttribute : Attribute;

@@ -1,10 +1,10 @@
 using System.Collections.Concurrent;
 using AutoFixture;
 using FluentAssertions;
-using JsonObjectHasher.Newtonsoft.Tests.Models;
+using JsonObjectHasher.SystemTextJson.Tests.Models;
 using Xunit;
 
-namespace JsonObjectHasher.Newtonsoft.Tests;
+namespace JsonObjectHasher.SystemTextJson.Tests;
 
 public class ObjectHasherTests
 {

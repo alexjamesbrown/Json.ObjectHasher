@@ -1,6 +1,6 @@
 using JsonObjectHasher;
 
-namespace JsonObjectHasher.Newtonsoft.Tests.Models;
+namespace JsonObjectHasher.SystemTextJson.Tests.Models;
 
 public class ClassWithIgnoredProperty
 {

@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>JsonObjectHasher</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <!-- NuGet Package Metadata -->
-    <PackageId>JsonObjectHasher</PackageId>
+    <PackageId>JsonObjectHasher.SystemTextJson</PackageId>
     <Version>1.0.0</Version>
     <Authors>Contributors</Authors>
-    <Description>Core library for JSON Object Hasher. Contains the HashIgnoreAttribute for excluding properties from hash calculation.</Description>
-    <PackageTags>hash;json;object;md5;fingerprint;attribute</PackageTags>
+    <Description>Generate deterministic MD5 hashes from .NET objects using JSON serialization with System.Text.Json. Supports property exclusion via HashIgnore attribute, multiple object hashing, and custom serialization settings.</Description>
+    <PackageTags>hash;json;object;md5;fingerprint;system.text.json;deterministic;caching;deduplication</PackageTags>
     <PackageProjectUrl>https://github.com/json-object-hasher/json-object-hasher</PackageProjectUrl>
     <RepositoryUrl>https://github.com/json-object-hasher/json-object-hasher</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -22,6 +21,10 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JsonObjectHasher\JsonObjectHasher.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,12 @@
 using System.Security.Cryptography;
 using System.Text;
-using JsonObjectHasher;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 
-namespace JsonObjectHasher.Newtonsoft;
+namespace JsonObjectHasher.SystemTextJson;
 
 /// <summary>
-/// Generates deterministic MD5 hashes from objects using JSON serialization with Newtonsoft.Json.
+/// Generates deterministic MD5 hashes from objects using JSON serialization with System.Text.Json.
 /// </summary>
 /// <remarks>
 /// <para>
@@ -30,36 +30,42 @@ namespace JsonObjectHasher.Newtonsoft;
 /// </example>
 public class ObjectHasher : IObjectHasher
 {
-    private readonly JsonSerializerSettings _settings;
+    private readonly JsonSerializerOptions _options;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ObjectHasher"/> class with custom serialization settings.
+    /// Initializes a new instance of the <see cref="ObjectHasher"/> class with custom serialization options.
     /// </summary>
-    /// <param name="settings">
-    /// The JSON serialization settings to use. Note that the <see cref="JsonSerializerSettings.ContractResolver"/>
-    /// will be overwritten to support the <see cref="HashIgnoreAttribute"/>.
+    /// <param name="options">
+    /// The JSON serialization options to use. Note that a custom <see cref="JsonSerializerOptions.TypeInfoResolver"/>
+    /// will be configured to support the <see cref="HashIgnoreAttribute"/>.
     /// </param>
     /// <example>
     /// <code>
-    /// var settings = new JsonSerializerSettings
+    /// var options = new JsonSerializerOptions
     /// {
-    ///     NullValueHandling = NullValueHandling.Ignore
+    ///     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
     /// };
-    /// var hasher = new ObjectHasher(settings);
+    /// var hasher = new ObjectHasher(options);
     /// </code>
     /// </example>
-    public ObjectHasher(JsonSerializerSettings settings)
+    public ObjectHasher(JsonSerializerOptions options)
     {
-        _settings = new JsonSerializerSettings(settings)
+        _options = new JsonSerializerOptions(options)
         {
-            ContractResolver = new HashIgnoreContractResolver()
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver
+            {
+                Modifiers =
+                {
+                    HashIgnoreModifier.ExcludeHashIgnoredProperties
+                }
+            }
         };
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ObjectHasher"/> class with default settings.
+    /// Initializes a new instance of the <see cref="ObjectHasher"/> class with default options.
     /// </summary>
-    public ObjectHasher() : this(new JsonSerializerSettings())
+    public ObjectHasher() : this(new JsonSerializerOptions())
     {
     }
 
@@ -91,8 +97,7 @@ public class ObjectHasher : IObjectHasher
             throw new ArgumentNullException(nameof(values));
         }
 
-        var textValue = JsonConvert
-            .SerializeObject(values, _settings);
+        var textValue = JsonSerializer.Serialize(values, _options);
 
         using var hasher = MD5.Create();
 

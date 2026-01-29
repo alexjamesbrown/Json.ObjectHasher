@@ -1,4 +1,4 @@
-using json_object_hasher;
+using JsonObjectHasher;
 
 namespace JsonObjectHasher.Newtonsoft.Tests.Models;
 
