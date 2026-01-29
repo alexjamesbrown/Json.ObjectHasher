@@ -5,6 +5,7 @@
     <Project Path="src\JsonObjectHasher.Newtonsoft\JsonObjectHasher.Newtonsoft.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/JsonObjectHasher.SystemTextJson.Tests/JsonObjectHasher.SystemTextJson.Tests.csproj" />
     <Project Path="test\JsonObjectHasher.Newtonsoft.Tests\JsonObjectHasher.Newtonsoft.Tests.csproj" />
   </Folder>
   <Properties Name="Visual Studio">

@@ -8,12 +8,7 @@ namespace JsonObjectHasher.Newtonsoft.Tests;
 
 public class ObjectHasherTests
 {
-    private readonly ObjectHasher _objectHasher;
-
-    public ObjectHasherTests()
-    {
-        _objectHasher = new ObjectHasher();
-    }
+    private readonly ObjectHasher _objectHasher = new();
 
     [Fact]
     public void SameObject_ShouldGetSameHashCode()
@@ -25,7 +20,6 @@ public class ObjectHasherTests
 
         md5Code1.Should().Be(md5Code2);
     }
-
 
     [Fact]
     public void SameObjectWithUrl_ShouldGetSameHashCode()
@@ -73,17 +67,21 @@ public class ObjectHasherTests
 
         var hashCodes = new ConcurrentBag<string>();
 
-        var tasks = Enumerable.Range(0, numThreads).Select(_ => Task.Run(() =>
-        {
-            var up = new Fixture().Create<AnotherCompletedEvent>();
-            var down = new Fixture().Create<CompletedEvent>();
+        var tasks = Enumerable.Range(0, numThreads).Select
+        (_ => Task.Run
+            (() =>
+                {
+                    var up = new Fixture().Create<AnotherCompletedEvent>();
+                    var down = new Fixture().Create<CompletedEvent>();
 
-            var md5Code1 = _objectHasher.GenerateHash(up);
-            var md5Code2 = _objectHasher.GenerateHash(down);
+                    var md5Code1 = _objectHasher.GenerateHash(up);
+                    var md5Code2 = _objectHasher.GenerateHash(down);
 
-            hashCodes.Add(md5Code1);
-            hashCodes.Add(md5Code2);
-        })).ToArray();
+                    hashCodes.Add(md5Code1);
+                    hashCodes.Add(md5Code2);
+                }
+            )
+        ).ToArray();
 
         // Wait for all tasks to complete
         await Task.WhenAll(tasks);
@@ -152,7 +150,7 @@ public class ObjectHasherTests
 
         hash1.Should().Be(hash2);
     }
-    
+
     [Fact]
     public void Does_Not_Include_Properties_Marked_As_Ignored_In_Hash_Value_With_Record()
     {
