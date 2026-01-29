@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src\JsonObjectHasher\JsonObjectHasher.csproj" />
+    <Project Path="src/JsonObjectHasher.SystemTextJson/JsonObjectHasher.SystemTextJson.csproj" />
+    <Project Path="src\JsonObjectHasher.Newtonsoft\JsonObjectHasher.Newtonsoft.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test\JsonObjectHasher.Newtonsoft.Tests\JsonObjectHasher.Newtonsoft.Tests.csproj" />
+  </Folder>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith.Version" Value="17.5.002.0" />
+  </Properties>
+</Solution>
